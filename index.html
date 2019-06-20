@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Imitatio</title>
+    <link rel="shortcut icon" href="img/favicon.png"/>
+    <link rel="stylesheet" href="css/iziToast.min.css">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="js/default.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="js/iziToast.min.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand centered">
+            <img class="navbar-item center" src="img/logo-3.png" />
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                    <a class="button is-dark dict">
+                        <span class="icon is-small"><i class="fas fa-book-open"></i></span>
+                        <strong>Dictionary</strong>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-two-fifths">
+                    <div class="box is-height">
+                        <p class="title is-5">Write on tape</p>
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input new-word" type="text" placeholder="E.g.: lexical">
+                            </div>
+                            <div class="control">
+                                <button class="button is-dark add-word">Write</button>
+                            </div>
+                        </div>
+                        <div class="field is-grouped is-grouped-right">
+                            <p class="control">
+                                <button class="button is-dark analyze-all">Analyze</button>
+                            </p>
+                            <p class="control">
+                                <button class="button is-dark analyze-step">Step-by-step</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <p class="title is-5">Steps</p>
+                        <div class="max-h">
+                            <table class="table is-bordered is-narrow" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th class="t-head">State/Position</th>
+                                        <th class="t-head">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="steps">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <p class="title is-5">Tape</p>
+                        <table class="table is-bordered">
+                            <tbody class="fita">
+                                <tr><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td><td>β</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="title is-5">Turing Machine</p>
+                        <table class="table is-bordered is-narrow turing" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th class="states">-</th>
+                                    <th class="states">*</th>
+                                    <th class="states">a</th>
+                                    <th class="states">b</th>
+                                    <th class="states">c</th>
+                                    <th class="states">x</th>
+                                    <th class="states">y</th>
+                                    <th class="states">z</th>
+                                    <th class="states">beta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>q0</td>
+                                    <td class="q0-init">q0, *, D</td>
+                                    <td class="q0-a">q1, x, D</td>
+                                    <td class="q0-b">-</td>
+                                    <td class="q0-c">-</td>
+                                    <td class="q0-x">-</td>
+                                    <td class="q0-y">q4, y, D</td>
+                                    <td class="q0-z">-</td>
+                                    <td class="q0-β">-</td>
+                                </tr>
+                                <tr>
+                                    <td>q1</td>
+                                    <td class="q1-*">-</td>
+                                    <td class="q1-a">q1, a, D</td>
+                                    <td class="q1-b">q2, y, D</td>
+                                    <td class="q1-c">-</td>
+                                    <td class="q1-x">-</td>
+                                    <td class="q1-y">q1, y, D</td>
+                                    <td class="q1-z">-</td>
+                                    <td class="q1-β">-</td>
+                                </tr>
+                                <tr>
+                                    <td>q2</td>
+                                    <td class="q2-*">-</td>
+                                    <td class="q2-a">-</td>
+                                    <td class="q2-b">q2, b, D</td>
+                                    <td class="q2-c">q3, z, E</td>
+                                    <td class="q2-x">-</td>
+                                    <td class="q2-y">-</td>
+                                    <td class="q2-z">q2, z, D</td>
+                                    <td class="q2-β">-</td>
+                                </tr>
+                                <tr>
+                                    <td>q3</td>
+                                    <td class="q3-*">-</td>
+                                    <td class="q3-a">q3, a, E</td>
+                                    <td class="q3-b">q3,b,E</td>
+                                    <td class="q3-c">-</td>
+                                    <td class="q3-x">q0, x, D</td>
+                                    <td class="q3-y">q3, y, E</td>
+                                    <td class="q3-z">q3, z, E</td>
+                                    <td class="q3-β">-</td>
+                                </tr>
+                                <tr>
+                                    <td>q4</td>
+                                    <td class="q4-*">-</td>
+                                    <td class="q4-a">-</td>
+                                    <td class="q4-b">-</td>
+                                    <td class="q4-c">-</td>
+                                    <td class="q4-x">-</td>
+                                    <td class="q4-y">q4, y, D</td>
+                                    <td class="q4-z">q4, z, D</td>
+                                    <td class="q4-β">q5, β, D</td>
+                                </tr>
+                                <tr>
+                                    <td>q5*</td>
+                                    <td class="q5-*">-</td>
+                                    <td class="q5-a">-</td>
+                                    <td class="q5-b">-</td>
+                                    <td class="q5-c">-</td>
+                                    <td class="q5-x">-</td>
+                                    <td class="q5-y">-</td>
+                                    <td class="q5-z">-</td>
+                                    <td class="q5-β">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box small-footer">
+                        <b>Imitatio</b> - Máquina de Turing montada como trabalho final da disciplina de Compiladores<br />
+                        Jessica Dagostini - Turma 2015 - Ano 2019
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+            <p class="modal-card-title">Dictionary</p>
+            <button class="delete close-modal" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="tags" id="dict">
+                </div>
+            </section>
+            <footer class="modal-card-foot"></footer>
+        </div>
+    </div>
+  </body>
+</html>

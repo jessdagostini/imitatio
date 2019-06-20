@@ -1,0 +1,56 @@
+.focus-row, .focus-col{
+    background-color: rgba(158, 158, 158, 0.48);
+    font-weight: bold;
+}
+
+.focus-row-err, .focus-col-err{
+    background-color: rgba(236, 19, 19, 0.59);
+}
+
+.valid {
+    color: green;
+    border-color: green !important;
+    box-shadow: 0 0 0 0.125em rgba(50, 220, 87, 0.25) !important;
+}
+
+.invalid {
+    color: red;
+    border-color: red !important;
+    box-shadow: 0 0 0 0.125em rgba(160, 4, 4, 0.25) !important;    
+}
+
+.states, .t-head {
+    background-color: #f8f8f8;
+}
+
+.centered {
+    margin-left: 7%;
+}
+
+.state- {
+    color: #bbb;
+}
+
+#machine td{
+    padding-left: 10px;
+}
+
+.is-height{
+    min-height: 160px;
+}
+
+.max-h {
+    overflow-y: scroll;
+    min-height: 250px;
+    max-height: 250px;
+}
+
+table {
+    text-align: center;
+    margin: auto;
+}
+
+.small-footer{
+    text-align: right;
+    font-size: 13px;
+}
