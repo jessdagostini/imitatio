@@ -54,6 +54,10 @@ $(document).ready(function() {
     $(".add-word").click(function(){
         var word = ($('.new-word').val()).toLowerCase(); 
         tape = addWord(word);
+        $('.analyze-all').removeClass('is-light');
+        $('.analyze-step').removeClass('is-light');
+        $('.analyze-all').addClass('is-dark');
+        $('.analyze-step').addClass('is-dark');
     });
 
     $(".analyze-all").click(function(){
@@ -64,6 +68,16 @@ $(document).ready(function() {
         highlightStep();
         writeSteps();
         turingMachineByStep();
+    });
+
+    $(".restart").click(function(){
+        restart();
+        $('.analyze-all').removeClass('is-light');
+        $('.analyze-step').removeClass('is-light');
+        $('.analyze-all').addClass('is-dark');
+        $('.analyze-step').addClass('is-dark');
+        $('.restart').removeClass('is-dark');
+        $('.restart').addClass('is-light');
     });
 })
 
@@ -139,6 +153,12 @@ function turingMachineByStep() {
             color: 'green',
             position: 'topCenter'
         });
+        $('.analyze-step').removeClass('is-dark');
+        $('.analyze-step').addClass('is-light');
+        $('.analyze-all').removeClass('is-dark');
+        $('.analyze-all').addClass('is-light');
+        $('.restart').removeClass('is-light');
+        $('.restart').addClass('is-dark');
     }
 }
 
@@ -210,6 +230,12 @@ function turingMachine() {
             color: 'green',
             position: 'topCenter'
         });
+        $('.analyze-step').removeClass('is-dark');
+        $('.analyze-step').addClass('is-light');
+        $('.analyze-all').removeClass('is-dark');
+        $('.analyze-all').addClass('is-light');
+        $('.restart').removeClass('is-light');
+        $('.restart').addClass('is-dark');
     }
 }
 
@@ -224,4 +250,22 @@ function writeSteps() {
     }
 
     $('.steps').append(`<tr>${row}</tr>`);
+}
+
+function restart() {
+    var word = ($('.new-word').val()).toLowerCase(); 
+    tape = addWord(word);
+
+    // Variables to save current status
+    state = 'q0';
+    pos = 0;
+
+    // Varaibles to save past status
+    past_tape = '';
+    past_state = '';
+    past_pos = -1;
+
+    count = 0;
+
+    $('.steps').find('tr').remove('tr');
 }
