@@ -52,8 +52,7 @@ $(document).ready(function() {
 
     // Add word into the dict
     $(".add-word").click(function(){
-        var word = ($('.new-word').val()).toLowerCase(); 
-        tape = addWord(word);
+        restart();
         $('.analyze-all').removeClass('is-light');
         $('.analyze-step').removeClass('is-light');
         $('.analyze-all').addClass('is-dark');
@@ -97,7 +96,7 @@ function addWord(word) {
         return word;
     } else {
         iziToast.show({
-            message: `This field can not be empty`,
+            message: `Este campo não pode estar vazio`,
             color: 'red',
             position: 'topCenter'
         });
@@ -112,7 +111,7 @@ function turingMachineByStep() {
     if (tape.length > pos && pos >= 0) {
         if (typeof turing[state][tape[pos]] === 'undefined') {
             iziToast.show({
-                message: `The input value cannot be recognized.`,
+                message: `O valor escrito não pode ser reconhecido`,
                 color: 'red',
                 position: 'topCenter'
             });
@@ -143,13 +142,13 @@ function turingMachineByStep() {
         }
     } else if (tape.length == 0) {
         iziToast.show({
-            message: `The tape is empty.`,
+            message: `A fita está vazia`,
             color: 'red',
             position: 'topCenter'
         });
     } else {
         iziToast.show({
-            message: `The input was recognized!.`,
+            message: `A entrada foi reconhecida!.`,
             color: 'green',
             position: 'topCenter'
         });
