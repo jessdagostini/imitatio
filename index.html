@@ -22,7 +22,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
                     <a class="button is-dark dict">
-                        <span class="icon is-small"><i class="fas fa-gavel"></i></span>
+                        <span class="icon is-small"><i class="fas fa-cog"></i></span>
                         <strong>Informações</strong>
                     </a>
                     </div>
@@ -178,15 +178,20 @@
     <div class="modal">
         <div class="modal-background"></div>
         <div class="modal-card">
-            <header class="modal-card-head">
-            <p class="modal-card-title">Dictionary</p>
-            <button class="delete close-modal" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body">
-                <div class="tags" id="dict">
+            <article class="message is-dark">
+                <div class="message-header">
+                    <p>Informações</p>
+                    <button class="delete close-modal" aria-label="delete"></button>
                 </div>
-            </section>
-            <footer class="modal-card-foot"></footer>
+                <div class="message-body">
+                    <p>Esta Máquina de Turing implementa o reconhecimento da seguinte gramática</p>
+                    <center>L(C) = {a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> | n ≥ 1}</center>
+                    <p>E é definida por</p>
+                    <center>M = {{a,b,c}, {q<sub>0</sub>,q<sub>1</sub>,q<sub>2</sub>,q<sub>3</sub>,q<sub>4</sub>,q<sub>5</sub>}, δ, q<sub>0</sub>, {q<sub>5</sub>}, {a, b, c, x, y, z, β}, β, *}.</center>
+                    <center><img src="img/grafo.png"></center>
+                    Fonte: <a href="http://wwwp.fc.unesp.br/~simonedp/zipados/TC04.pdf">http://wwwp.fc.unesp.br/~simonedp/zipados/TC04.pdf</a>
+                </div>
+            </article>
         </div>
     </div>
   </body>
