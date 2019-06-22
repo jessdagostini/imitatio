@@ -185,7 +185,7 @@ function turingMachine() {
         writeSteps();
         if (typeof turing[state][tape[pos]] === 'undefined') {
             iziToast.show({
-                message: `The input value cannot be recognized.`,
+                message: `A entrada não pode ser reconhecida.`,
                 color: 'red',
                 position: 'topCenter'
             });
@@ -217,7 +217,7 @@ function turingMachine() {
     }
     if (tape.length == 0) {
         iziToast.show({
-            message: `The tape is empty.`,
+            message: `A fita está vazia.`,
             color: 'red',
             position: 'topCenter'
         });
@@ -225,7 +225,7 @@ function turingMachine() {
         highlightStep();
         writeSteps();
         iziToast.show({
-            message: `The input was recognized!.`,
+            message: `A entrada foi reconhecida!`,
             color: 'green',
             position: 'topCenter'
         });
@@ -240,9 +240,9 @@ function turingMachine() {
 
 function writeSteps() {
     if (state == final_state) {
-        var row = `<td>Accepted in ${count} iterations</td>`;
+        var row = `<td>Aceita em ${count} iterações</td>`;
     } else if (typeof turing[state][tape[pos]] === 'undefined') {
-        var row = `<td>Rejected in ${count} iterations</td>`;
+        var row = `<td>Erro em ${count} iterações</td>`;
     } else {
         var row = `<td>${state},${tape[pos]}</td>`;
         row = row + `<td>${turing[state][tape[pos]]}</td>`;
