@@ -53,28 +53,53 @@ $(document).ready(function() {
     // Add word into the dict
     $(".add-word").click(function(){
         restart();
-        $('.analyze-all').removeClass('is-light');
-        $('.analyze-step').removeClass('is-light');
-        $('.analyze-all').addClass('is-dark');
-        $('.analyze-step').addClass('is-dark');
     });
 
     $(".analyze-all").click(function(){
-        turingMachine();
+        if (tape.length == 0) {
+            iziToast.show({
+                message: `A fita está vazia.`,
+                color: 'red',
+                position: 'topCenter'
+            });
+        } else {
+            while (tape.length > pos && pos >= 0) {
+                highlightStep();
+                writeSteps();
+                turingMachineByStep();
+            }
+            highlightStep();
+            writeSteps();
+            iziToast.show({
+                message: `A entrada foi reconhecida!`,
+                color: 'green',
+                position: 'topCenter'
+            });
+            $('.analyze-step').removeClass('is-dark');
+            $('.analyze-step').addClass('is-light');
+            $('.analyze-all').removeClass('is-dark');
+            $('.analyze-all').addClass('is-light');
+            $('.restart').removeClass('is-light');
+            $('.restart').addClass('is-dark');
+        }
     });
 
     $(".analyze-step").click(function(){
-        highlightStep();
-        writeSteps();
-        turingMachineByStep();
+        if (tape.length == 0) {
+            iziToast.show({
+                message: `A fita está vazia.`,
+                color: 'red',
+                position: 'topCenter'
+            });
+        } else {
+            highlightStep();
+            writeSteps();
+            turingMachineByStep();
+        }
     });
 
     $(".restart").click(function(){
         restart();
-        $('.analyze-all').removeClass('is-light');
-        $('.analyze-step').removeClass('is-light');
-        $('.analyze-all').addClass('is-dark');
-        $('.analyze-step').addClass('is-dark');
         $('.restart').removeClass('is-dark');
         $('.restart').addClass('is-light');
     });
@@ -93,6 +118,12 @@ function addWord(word) {
 
         $('.fita').find('tr').remove('tr');
         $('.fita').append(`<tr>${row}</tr>`);
+
+        $('.analyze-all').removeClass('is-light');
+        $('.analyze-step').removeClass('is-light');
+        $('.analyze-all').addClass('is-dark');
+        $('.analyze-step').addClass('is-dark');
+
         return word;
     } else {
         iziToast.show({
@@ -138,14 +169,8 @@ function turingMachineByStep() {
         count = count + 1;
 
         if (state == final_state) {
-            pos = tape.length + 1;
+            pos = tape.length;
         }
-    } else if (tape.length == 0) {
-        iziToast.show({
-            message: `A fita está vazia`,
-            color: 'red',
-            position: 'topCenter'
-        });
     } else {
         iziToast.show({
             message: `A entrada foi reconhecida!.`,
@@ -176,65 +201,6 @@ function highlightStep() {
     } else {
         $('.fita .fita-' + pos).delay("slow").addClass('focus-row');
         $('.turing .' + state + '-' + tape[pos]).delay("slow").addClass('focus-col');
-    }
-}
-
-function turingMachine() {
-    while (tape.length > pos && pos >= 0) {
-        highlightStep();
-        writeSteps();
-        if (typeof turing[state][tape[pos]] === 'undefined') {
-            iziToast.show({
-                message: `A entrada não pode ser reconhecida.`,
-                color: 'red',
-                position: 'topCenter'
-            });
-            $('.analyize-step').removeClass('analyze-step');
-        }
-        var aux = turing[state][tape[pos]].split(",");
-        past_state = state;
-        state = aux[0];
-        past_pos = pos;
-        past_tape = tape;
-
-        // Write on tape
-        tape = replaceAt(tape, pos, aux[1]);
-        $(`.fita-${pos}`).html(aux[1]);
-        
-        
-        // Check if we need to go to right or left in the tape
-        if (aux[2] == 'D') {
-            pos = pos+1;
-        } else if (aux[2] == 'E') {
-            pos = pos-1;
-        }
-
-        count = count + 1;
-
-        if (state == final_state) {
-            pos = tape.length + 1;
-        }
-    }
-    if (tape.length == 0) {
-        iziToast.show({
-            message: `A fita está vazia.`,
-            color: 'red',
-            position: 'topCenter'
-        });
-    } else {
-        highlightStep();
-        writeSteps();
-        iziToast.show({
-            message: `A entrada foi reconhecida!`,
-            color: 'green',
-            position: 'topCenter'
-        });
-        $('.analyze-step').removeClass('is-dark');
-        $('.analyze-step').addClass('is-light');
-        $('.analyze-all').removeClass('is-dark');
-        $('.analyze-all').addClass('is-light');
-        $('.restart').removeClass('is-light');
-        $('.restart').addClass('is-dark');
     }
 }
 
